@@ -1,13 +1,17 @@
-# 🛰️ Satellite Imagery–Based Property Valuation
-
 <div align="center">
 
-![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
-![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red?style=for-the-badge&logo=pytorch)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+<!-- Animated Header -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,18,20,24&height=180&section=header&text=SATELLITE%20PROPERTY%20VALUATION&fontSize=45&fontColor=fff&animation=fadeIn&fontAlignY=38"/>
 
-**A multimodal machine learning project exploring how satellite imagery complements traditional housing data for property price prediction**
+<!-- Hero Badges -->
+<p>
+  <img src="https://img.shields.io/badge/Status-Active-00ff88?style=for-the-badge&labelColor=1a1a2e&logo=statuspage&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=1a1a2e"/>
+  <img src="https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white&labelColor=1a1a2e"/>
+  <img src="https://img.shields.io/badge/License-MIT-00ff88?style=for-the-badge&labelColor=1a1a2e"/>
+</p>
+
+**🛰️ A multimodal machine learning project exploring how satellite imagery complements traditional housing data for property price prediction**
 
 [Features](#-problem-overview) • [Approach](#-project-approach) • [Models](#-models-implemented) • [Setup](#-how-to-set-up-the-project) • [Findings](#-key-findings)
 
@@ -42,7 +46,11 @@ This project builds an end-to-end **real estate valuation pipeline** that combin
 </tr>
 </table>
 
-The goal is not just prediction, but **understanding whether and how visual context adds value** to property valuation.
+<div align="center">
+
+> **Goal:** Understanding whether and how visual context adds value to property valuation
+
+</div>
 
 ---
 
@@ -51,14 +59,16 @@ The goal is not just prediction, but **understanding whether and how visual cont
 <div align="center">
 
 ```mermaid
+%%{init: {'theme':'dark', 'themeVariables': {'primaryColor':'#7B2CBF', 'primaryTextColor':'#fff', 'lineColor':'#3A86FF', 'secondaryColor':'#06FFA5'}}}%%
 graph LR
     A[Traditional Features] -->|Limited Context| B[Valuation Model]
     C[Satellite Imagery] -->|Neighborhood Context| B
     B --> D[Enhanced Predictions]
     
-    style A fill:#e1f5ff
-    style C fill:#fff4e1
-    style D fill:#e8f5e9
+    style A fill:#3A86FF,stroke:#fff,stroke-width:2px
+    style C fill:#7B2CBF,stroke:#fff,stroke-width:2px
+    style D fill:#06FFA5,stroke:#fff,stroke-width:2px
+    style B fill:#FF006E,stroke:#fff,stroke-width:2px
 ```
 
 </div>
@@ -76,7 +86,13 @@ However, these features often fail to capture **neighborhood-level context**, su
 - 🌳 Green spaces vs concrete density
 - 🛣️ Road connectivity and urban layout
 
-> **Research Question:** Can satellite imagery improve property valuation when combined with tabular data?
+<div align="center">
+
+### 💡 Research Question
+
+> **Can satellite imagery improve property valuation when combined with tabular data?**
+
+</div>
 
 ---
 
@@ -156,14 +172,15 @@ satellite-property-valuation/
 
 ## 🧪 Models Implemented
 
+<div align="center">
+
 <table>
 <tr>
 <td width="33%" align="center">
 
-### 1️⃣ Tabular-Only
-**Strong Baseline**
+<img src="https://img.shields.io/badge/Model-Tabular--Only-3A86FF?style=for-the-badge&logo=databricks&logoColor=white"/>
 
-![Tabular](https://img.shields.io/badge/Type-Baseline-blue?style=flat-square)
+### 1️⃣ **Strong Baseline**
 
 Uses structured housing features only with traditional regression models
 
@@ -171,13 +188,14 @@ Uses structured housing features only with traditional regression models
 ✅ Interpretable  
 ✅ Fast training  
 
+**🥇 WINNER**
+
 </td>
 <td width="33%" align="center">
 
-### 2️⃣ Image-Only
-**Vision Model**
+<img src="https://img.shields.io/badge/Model-Image--Only-7B2CBF?style=for-the-badge&logo=pytorch&logoColor=white"/>
 
-![Image](https://img.shields.io/badge/Type-CNN-orange?style=flat-square)
+### 2️⃣ **Vision Model**
 
 Satellite images → ResNet18 embeddings
 
@@ -185,13 +203,14 @@ Satellite images → ResNet18 embeddings
 ⚠️ Noisy predictions  
 ⚠️ Needs context  
 
+**🔴 NOISY**
+
 </td>
 <td width="33%" align="center">
 
-### 3️⃣ Multimodal
-**Fusion Model**
+<img src="https://img.shields.io/badge/Model-Multimodal-FF006E?style=for-the-badge&logo=atom&logoColor=white"/>
 
-![Fusion](https://img.shields.io/badge/Type-Hybrid-purple?style=flat-square)
+### 3️⃣ **Fusion Model**
 
 Early fusion of tabular + image embeddings
 
@@ -199,9 +218,13 @@ Early fusion of tabular + image embeddings
 ❓ Critical analysis  
 ❓ Honest evaluation  
 
+**🟡 DID NOT IMPROVE**
+
 </td>
 </tr>
 </table>
+
+</div>
 
 ---
 
@@ -305,11 +328,12 @@ This will fetch satellite images for a stratified subset of properties.
 
 <div align="center">
 
-**Recommended Execution Order**
+### 📘 Recommended Execution Order
 
 </div>
 
 ```mermaid
+%%{init: {'theme':'dark', 'themeVariables': {'primaryColor':'#7B2CBF'}}}%%
 graph TD
     A[01_preprocessing.ipynb] -->|Clean Data| B[02_tabular_model.ipynb]
     B -->|Baseline| C[03_image_model.ipynb]
@@ -317,22 +341,51 @@ graph TD
     D -->|Multimodal| E[05_grad_cam.ipynb]
     E -->|Explainability| F[06_evaluation.ipynb]
     
-    style A fill:#e3f2fd
-    style B fill:#f3e5f5
-    style C fill:#fff3e0
-    style D fill:#e8f5e9
-    style E fill:#fce4ec
-    style F fill:#e0f2f1
+    style A fill:#e3f2fd,stroke:#3A86FF,stroke-width:3px,color:#000
+    style B fill:#f3e5f5,stroke:#7B2CBF,stroke-width:3px,color:#000
+    style C fill:#fff3e0,stroke:#FF9800,stroke-width:3px,color:#000
+    style D fill:#e8f5e9,stroke:#4CAF50,stroke-width:3px,color:#000
+    style E fill:#fce4ec,stroke:#FF006E,stroke-width:3px,color:#000
+    style F fill:#e0f2f1,stroke:#06FFA5,stroke-width:3px,color:#000
 ```
 
-| Notebook | Purpose | Output |
-|:---------|:--------|:-------|
-| `01_preprocessing.ipynb` | 🧹 Data cleaning & EDA | Cleaned datasets |
-| `02_tabular_model.ipynb` | 📊 Baseline model | Performance metrics |
-| `03_image_model.ipynb` | 🖼️ Image-only model | CNN embeddings |
-| `04_fusion_model.ipynb` | 🔗 Multimodal fusion | Combined predictions |
-| `05_grad_cam.ipynb` | 👁️ Explainability | Activation maps |
-| `06_evaluation.ipynb` | 📈 Final comparison | Model rankings |
+<table>
+<tr>
+<th>Notebook</th>
+<th>Purpose</th>
+<th>Output</th>
+</tr>
+<tr>
+<td><code>01_preprocessing.ipynb</code></td>
+<td>🧹 Data cleaning & EDA</td>
+<td>Cleaned datasets</td>
+</tr>
+<tr>
+<td><code>02_tabular_model.ipynb</code></td>
+<td>📊 Baseline model</td>
+<td>Performance metrics</td>
+</tr>
+<tr>
+<td><code>03_image_model.ipynb</code></td>
+<td>🖼️ Image-only model</td>
+<td>CNN embeddings</td>
+</tr>
+<tr>
+<td><code>04_fusion_model.ipynb</code></td>
+<td>🔗 Multimodal fusion</td>
+<td>Combined predictions</td>
+</tr>
+<tr>
+<td><code>05_grad_cam.ipynb</code></td>
+<td>👁️ Explainability</td>
+<td>Activation maps</td>
+</tr>
+<tr>
+<td><code>06_evaluation.ipynb</code></td>
+<td>📈 Final comparison</td>
+<td>Model rankings</td>
+</tr>
+</table>
 
 ---
 
@@ -358,23 +411,22 @@ id,predicted_price
 
 <table>
 <tr>
-<td>
+<td width="33%" align="center">
 
-⚠️ Satellite imagery is treated as a **complementary signal**, not a replacement
-
-</td>
-</tr>
-<tr>
-<td>
-
-⚠️ Naïve fusion can degrade performance due to noisy high-dimensional features
+### 🎯
+Satellite imagery is treated as a **complementary signal**, not a replacement
 
 </td>
-</tr>
-<tr>
-<td>
+<td width="33%" align="center">
 
-⚠️ Advanced fusion methods (attention, gating, late fusion) are proposed as future work
+### 🔬
+Naïve fusion can degrade performance due to noisy high-dimensional features
+
+</td>
+<td width="33%" align="center">
+
+### 🚀
+Advanced fusion methods (attention, gating, late fusion) are proposed as future work
 
 </td>
 </tr>
@@ -386,14 +438,16 @@ id,predicted_price
 
 <div align="center">
 
-| Enhancement | Impact |
-|:------------|:------:|
-| 🎯 Attention-based multimodal fusion | High |
-| 🔄 Late fusion of predictions | Medium |
-| ⏱️ Temporal satellite imagery | High |
-| 📈 Socioeconomic context integration | Medium |
-| 🏗️ Architecture search (NAS) | Low |
-| 🗺️ Multi-scale spatial features | High |
+| Enhancement | Impact | Status |
+|:------------|:------:|:------:|
+| 🎯 Attention-based multimodal fusion | 🔥 High | 🔵 In Progress |
+| 🔄 Late fusion of predictions | ⭐ Medium | 🔵 In Progress |
+| ⏱️ Temporal satellite imagery | 🔥 High | ⚪ Planned |
+| 📈 Socioeconomic context integration | ⭐ Medium | ⚪ Planned |
+| 🏗️ Architecture search (NAS) | 🌟 Low | ⚫ Research |
+| 🗺️ Multi-scale spatial features | 🔥 High | ⚫ Research |
+
+**Legend:** 🔵 In Progress • ⚪ Planned • ⚫ Research Phase
 
 </div>
 
@@ -405,14 +459,38 @@ id,predicted_price
 
 **This project emphasizes engineering discipline, experimental rigor, and honest analysis over chasing marginal metric gains.**
 
-</div>
-
 ### It demonstrates:
 
-✨ **End-to-end ML system design**  
-✨ **Multimodal data handling**  
-✨ **Explainability & interpretability**  
-✨ **Critical evaluation of results**  
+</div>
+
+<table>
+<tr>
+<td width="25%" align="center">
+
+### ⚙️
+**End-to-end ML system design**
+
+</td>
+<td width="25%" align="center">
+
+### 🔗
+**Multimodal data handling**
+
+</td>
+<td width="25%" align="center">
+
+### 🔍
+**Explainability & interpretability**
+
+</td>
+<td width="25%" align="center">
+
+### 📊
+**Critical evaluation of results**
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -424,15 +502,18 @@ Open an issue or reach out!
 
 **Made with 🛰️ and 🧠**
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/satellite-property-valuation?style=social)](https://github.com/yourusername/satellite-property-valuation)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/satellite-property-valuation?style=social)](https://github.com/yourusername/satellite-property-valuation)
+<p>
+  <a href="https://github.com/yourusername/satellite-property-valuation">
+    <img src="https://img.shields.io/github/stars/yourusername/satellite-property-valuation?style=for-the-badge&logo=github&color=00ff88&labelColor=1a1a2e"/>
+  </a>
+  <a href="https://github.com/yourusername/satellite-property-valuation">
+    <img src="https://img.shields.io/github/forks/yourusername/satellite-property-valuation?style=for-the-badge&logo=github&color=3A86FF&labelColor=1a1a2e"/>
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-FF006E?style=for-the-badge&labelColor=1a1a2e"/>
+  </a>
+</p>
 
-</div>
-
----
-
-<div align="center">
-
-**⭐ If you find this project useful, please consider giving it a star!**
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,18,20,24&height=120&section=footer"/>
 
 </div>
